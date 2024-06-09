@@ -1,6 +1,8 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
+import iconSucsessUrl from '../img/bi_check2-circle.svg';
+import iconErrorUrl from '../img/bi_x-octagon.svg'
 
 const formElem = document.querySelector('.form');
 formElem.elements.delay.setAttribute('step', 1000);
@@ -13,12 +15,24 @@ formElem.addEventListener('submit', (event) => {
     createPromise(delay, state)
         .then((delay) => {
             iziToast.show({
-                message: `✅ Fulfilled promise in ${delay}ms`,
+                title: 'Ok',
+                message: `Fulfilled promise in ${delay}ms`,
+                backgroundColor: '#59A10D',
+                messageColor: 'white',
+                iconUrl: iconSucsessUrl,
+                position: 'topRight',
+                theme: 'dark',
             })
         })
         .catch((delay) => {
             iziToast.show({
-                message: `❌ Rejected promise in ${delay}ms`
+                title: 'Oops',
+                message: ` Rejected promise in ${delay}ms`,
+                backgroundColor: '#EF4040',
+                messageColor: 'white',
+                iconUrl: iconErrorUrl,
+                position: 'topRight',
+                theme: 'dark',
             })
     });
 
